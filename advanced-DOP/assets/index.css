@@ -1,0 +1,226 @@
+/*
+ * TaintDroid website stylesheet.
+ *
+ * Combines elements from:
+ *   http://vanish.cs.washington.edu/css/index.css
+ *   http://seattle.intel-research.net/~jjung/mine.css
+ */
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 12pt;
+  background: #FFFFFF; 
+  width: 1000px;
+  margin: 20px auto 10px auto;
+  /*border: 2px solid gray;*/
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+pre {
+  padding: 1em;
+  font-size: 80%;
+  border: 1px dashed #2f6fab;
+  color: black;
+  background-color: #f9f9f9;
+  line-height: 1.1em;
+}
+
+#body h4 {
+  font-weight: bold;
+  font-size: 110%;
+  color:#4D87CE;
+ }
+
+table.text {
+  font-size: 11pt;
+}
+
+a:link {
+  color: navy;
+}
+a:visited {
+  color: navy;
+}
+
+#content{ 
+  padding: 5px 5px 5px 10px;
+}
+
+#alert{
+  font-size:10pt; 
+  padding: 10px 10px 0px 20px;
+}
+
+#list{ 
+  padding: 0px 5px 5px 10px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+#body h3, #body h3.crimson, #body h3.gray, #body h3.purple, #body h3.green, #body h3.orange{
+  text-align: left;
+  line-height: 0pt;
+  color:#4D87CE;
+  font: 14pt arial, sans-serif;
+  padding: 5px 5px 5px 10px;
+}
+
+#body h3.crimson {
+  color: #990033;
+}
+
+#body h3.gray {
+  color: #222222;
+}
+
+#body h3.purple {
+  color: #660099;
+}
+
+#body h3.green {
+  color: #006699;
+}
+
+#body h3.orange{
+  color: #FF3300;
+  font-weight: bold;
+}
+#body h3.orange a {
+  color: #FF3300;
+  text-decoration: none;
+}
+#body h3.black{
+  color: #000000;
+  border-bottom:1px solid #36322f;
+  font-weight: bold;
+}
+
+#body h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size:45px;
+  /*text-transform:uppercase;*/
+  font-weight:bold;
+  margin:0;
+  padding:0;
+  padding-top:5px;
+  color:#4D87CE;
+  margin-top:50px;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+div.institution {
+  color: #FF3300;
+  font: 14pt arial, sans-serif;
+  font-weight: bold;
+}
+
+div.institution a {
+  text-decoration: none;
+  color: #FF3300;
+}
+
+div.person {
+  margin: 4px 0px 0px 0px;
+  color: #000000;
+}
+
+div.person a {
+  text-decoration: none;
+}
+
+div.news {
+  margin: 10px 0px 0px 14px;
+  background-color:#F2F2F2;
+  padding: 10px 10px 10px 10px; 
+}
+
+div.news_item {
+  margin: 8px 0px 8px 0px;
+  font-size:10pt;
+}
+
+.date {
+  font-weight:bold;
+  color:#4D87CE;
+  /*color: #FF3300;*/
+}
+
+#media
+{
+  background-color: #1a1a1a;
+  margin-top: 40px;
+}
+#noUpdate
+{
+  margin: 0 auto;
+  font-family:'Roboto', Helvetica, sans-serif;
+  font-size: x-small;
+  color: #cccccc;
+  text-align: left;
+  width: 210px; 
+  height: 200px;	
+  padding: 40px;
+  background-color: #1a1a1a;
+}
+#note
+{
+  margin: 0 auto;
+  font-family:'Roboto', Helvetica, sans-serif;
+  font-size: 12pt;
+  color: #cccccc;
+  text-align: left;
+  width: 610px; 
+  height: 200px;	
+  padding: 40px;
+  background-color: #1a1a1a;
+}
+a
+{
+  color: yellow;
+}
+.faq-question {
+  font-weight: bold;
+  font-size: 110%;
+  border-bottom: 1px solid black;
+  margin-left: 2em;
+  margin-right: 2em;
+ }
+.faq-answer {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+#navigation {
+  text-align: center;
+  font-weight:bold;
+  background-color:#B3B3B3;
+  padding: 8px 31px 7px 31px;
+  border-bottom: 1px solid black;
+  font-size:14pt;
+  color:#ffffff;
+}
+
+#navigation a {
+  text-decoration: none;
+  padding: 8px 31px 7px 31px;
+  font-size:14pt;
+  color:#ffffff;
+}
+
+#navigation a:visited, a:active {
+  text-decoration: none;
+}
+
+#navigation a:hover {
+  color: #B3B3B3;
+  color:#FF3300;
+  background-color: #FFFFFF;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  padding-bottom: 8px;
+}

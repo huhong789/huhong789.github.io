@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 2.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Your description goes here" />
+    <meta name="keywords" content="your,keywords,goes,here" />
+    <meta name="author" content="Your Name" />
+    <link rel="stylesheet" type="text/css" href="assets/basic-profile.css" title="Basic Profile" media="all" />
+    <title>Data-Oriented Programming</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>Data-Oriented Programming</h1>
+        <br><br>
+        <h3>Overview<span class="tab"></span> <a href="demo.html" align="right">Demo</a></h3>
+        <br>
+        <p>
+        As control-flow hijacking defenses gain adoption,
+        it is important to understand the remaining capabilities of
+        adversaries via memory exploits. Non-control data exploits are
+        used to mount information leakage attacks or corrupt a few bytes
+        of program memory. The common understanding is that such ex-
+        ploits have limited expressiveness; however, the question is: what
+        is the real expressive power of non-control data attacks? In this
+        paper we show that such attacks are Turing-complete. We present
+        a systematic technique called <i>data-oriented programming (DOP)</i> to 
+        to construct expressive non-control data exploits for arbitrary
+        x86 programs. In the experimental evaluation using 9 programs,
+        we identified 7518 data-oriented x86 gadgets and 5052 gadget
+        dispatchers which are the building blocks for DOP. 8 out of 9 real-world 
+        programs have gadgets to simulate arbitrary computations
+        and 2 of them are confirmed to be able to build Turing-complete
+        attacks. We build 3 end-to-end attacks to bypass randomization
+        defenses without leaking addresses, to run a network bot which
+        takes commands from the attacker, and to alter the memory
+        permissions. All the attacks work in the presence of ASLR
+        and DEP, demonstrating how the expressiveness offered by DOP
+        significantly empowers the attacker.<p>
+        
+        The work will be presented at the 37th IEEE Symposium on Security and Privacy in May 2016 
+        (<a href="http://www.ieee-security.org/TC/SP2016/">IEEE S&P 2016</a>).
+        </p>
+
+        <h3>Resources</h3>
+        <p>
+        [1] <a href="https://github.com/melynx/DOP-StaticAssist">LLVM tool</a> for automatic gadget identfication<br>
+    
+        [2] <a href="https://drive.google.com/file/d/0B_6p5h2gdgmoTV9ON0xYZWpMRTg/view?usp=sharing">Virtual machine</a> to try DOP attacks<br>
+        </p>
+        
+        <h3>Publication</h3>
+        <p>
+        <b>Data-Oriented Programming: On the Expressiveness of Non-Control Data Attacks</b> <a href='../papers/dop.pdf'>[PDF]</a>
+        <br/> Hong Hu, Shweta Shinde, Sendroiu Adrian, Zheng Leong Chua, Prateek Saxena, Zhenkai Liang
+        <br/> In <span style="font-style: italic;">the 37th IEEE Symposium on Security and Privacy</span>, San Jose, CA, US, May 2016
+        <br/>
+        </p>
+
+        <h3>Contributions</h3>
+        <ul>
+            <b>DOP</b>. We propose <i>data-oriented programming (DOP)</i>, a general method to build Turing-complete non-control data
+            attacks against vulnerable programs. We propose concrete methods to identify data-oriented gadgets, gadget
+            dispatchers and a search strategy to stitch these gadgets. <br> <br>
+            <b>Prevalence</b>. Our evaluation of 9 real world applications	shows that programs do have a large number (1273) of 
+            data-oriented gadgets reachable from real-world vulnerabilities, which are required by data-oriented programming
+            operations. <br> <br>
+            <b>Practicality</b>. We show that Turing-complete non-control data exploits for common memory errors are practical.
+            8 out of 9 applications provide data-oriented gadgets to build Turing-complete attacks. We build 3 end-to-end
+            non-control data exploits which work even in the presence of DEP and ASLR, demonstrating the effectiveness of
+            data-oriented programming. <br> 
+        </ul>
+        <h3>People</h3>
+        <ul>
+            <a href='http://www.comp.nus.edu.sg/~huhong/'>Hong Hu</a> <br>
+            <a href='http://www.comp.nus.edu.sg/~shweta24/'>Shweta Shinde</a> <br>
+            Sendriou Adrian <br>
+            <a href='http://www.comp.nus.edu.sg/~chuazl/'>Zheng Leong Chua</a> <br>
+            <a href='https://www.comp.nus.edu.sg/~prateeks/'>Prateek Saxena</a> <br>
+            <a href='https://www.comp.nus.edu.sg/~liangzk/'>Zhenkai Liang</a> <br>
+        </ul>
+        <h3>Contact</h3>
+        <p>
+        huhong789 AT gmail DOT com
+        </p>
+
+        <h3>Acknowledgements</h3>
+        <p>
+        This research is supported in part by the National Research Foundation, Prime Minister's Office, Singapore under its National Cybersecurity R&amp;D Program (Award No. NRF2014NCR-NCR001-21) and administered by the National Cybersecurity R&amp;D Directorate, and in part by a research grant from Symantec.
+        </p>
+        <center>
+        <table>
+            <tbody>
+                <tr>
+                    <td width=100> <br> </td> 
+                    <td valign="center"> <img src="http://www.nrf.gov.sg/html/images/common/logo-nrf.png"> </td>
+                    <td width=50> <br> </td> 
+                    <td valign="center"> <img src="./assets/SYM_Horiz_RGB-72dpi.jpg" width="65%" height="65%"> </td>
+                </tr>
+            </tbody>
+        </table>
+        </center>
+    </div>
+</body>
+
+</html>
