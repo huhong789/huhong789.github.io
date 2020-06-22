@@ -1,0 +1,392 @@
+<html>
+<script src="evil.js"></script>
+<script>
+function test()
+{
+	var count = 100;
+	var xhrinterval = setInterval(
+		function()
+		{
+			count -= 1
+			if(count>=0){
+				console.error("count: " + count);
+				//loadXMLDoc("https://www.google.com.sg/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
+				//access();
+				//gd();
+                //setCanvas();
+                //window_frames();
+                //getStorage();
+				//test_indexedDB();
+				//loadXMLDoc("file:///etc/hosts");
+				//accessWin();
+                window_top();
+			}
+			else
+				clearInterval(xhrinterval);
+		},
+		3000);
+}
+//AJAX cors
+function loadXMLDoc(website)
+{
+	var xmlhttp;
+	var start = performance.now();
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 )
+		{
+			if (xmlhttp.status==200)
+			{
+				var end = performance.now();
+				console.log("success time: " + (end - start));
+			}
+			else
+			{
+				var end = performance.now();
+				console.log("failed time: " + (end - start)); 
+			}
+		}
+		else
+		{
+			var end = performance.now();
+			console.log("failed time: " + (end - start)); 
+		}
+	}
+	//xmlhttp.open("GET","https://www.comp.nus.edu.sg/",true);
+	xmlhttp.open("GET", website, false);
+	xmlhttp.send();
+}
+
+function access()
+{
+	var x = document.getElementById("drive");
+	var access_start = performance.now();
+	try{
+		var y = (x.contentWindow || x.contentDocument);
+		z = y.document; 
+		var access_end = performance.now();
+		console.log("received time: " + (access_end - access_start))
+	}
+	catch(err){
+		var access_end = performance.now();
+		console.log("error time: " + (access_end - access_start))
+	}
+}
+function setting()
+{
+	document.getElementById("drive").src="https://www.google.com";
+}
+function gd(){
+	var x = document.getElementById("goo");
+	set_start = performance.now();
+	x.src = "https://google.com";
+	//x.src="https://www.baidu.com";
+	set_end = performance.now();
+	console.log("time: ", set_end - set_start);
+	//x.src=""
+}
+
+function getImageColor(src) {
+	var color = [];
+	var image = new Image();
+	image.src = src;
+
+	image.onload = function () {
+		var canvas = document.createElement("canvas");
+		canvas.width = image.width;
+		canvas.height = image.height;
+
+		// Draw the image in canvas
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(image, 0, 0);
+
+		// Get the pixel data
+		set_start = performance.now();
+        try {
+	 	var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            	set_end = performance.now();
+        	console.log("time: ", set_end - set_start);
+        } catch (error) {
+            set_end = performance.now();
+        	console.log("error time: ", set_end - set_start);
+        }
+		document.getElementById("add").appendChild(canvas);
+	};
+}
+function setCanvas (){
+	getImageColor("https://www.google.com.sg/images/srpr/logo11w.png");
+	//getImageColor("images.png");
+}
+function window_frames(){
+	//alert(document.getElementsByTagName("frame")[0].contentDocument.body.innerHTML);
+	//frame_a.htm
+	//http://baidu.com
+	start = performance.now()
+    try {
+		window.frames[0].document.body.innerHTML = "haha"
+		console.log("time " + (performance.now()-start))
+    } catch (error) {
+		console.log("error time: " + (performance.now()-start))
+    }
+}
+function window_top(){
+//alert(location.href);
+	var windowtop_start = performance.now();
+	y = window.top.document.location.href;
+	var windowtop_end   = performance.now();
+    console.log("success time: " + (windowtop_end - windowtop_start));
+//window.top; top; window.parent; parent
+//alert(document.getElementById("f1").contentDocument.body.innerHTML);
+//alert(document.getElementsByTagName("frame")[0].contentDocument.body.innerHTML);
+//frame_a.htm
+//http://baidu.com
+//alert(window.frames["f1"].document.body.innerHTML = "hihi");
+}
+function window_open() {
+    windowopen_start = performance.now();
+	try {
+		//myWindow = window.open("./t1.html", "myWindow");
+		myWindow = window.open("http://www.google.com", "myWindow");
+    	windowopen_end   = performance.now();
+		console.log("success time: " + (windowopen_end - windowopen_start));
+		myWindow.opener.document.write("This is the source window!");
+	} catch (error) {
+    	windowopen_end   = performance.now();
+		console.log("fail time: " + (windowopen_end - windowopen_start));
+	}
+}
+function setStorage()
+{
+	// Check browser support
+	var x = document.getElementById("demo");
+	if (typeof(Storage) != "undefined") {
+		// Store
+		localStorage.setItem("hi2", "hello");
+	} else {
+		x.innerHTML = "Sorry, your browser does not support Web Storage...";
+	}    
+}
+function getStorage()
+{
+	// Check browser support
+	var x = document.getElementById("demo");
+	if (typeof(Storage) != "undefined") {
+		// Retrieve
+        var storage_start = performance.now(); 
+		x.innerHTML = localStorage.getItem("hi2");
+        var storage_end   = performance.now();
+        console.log("success time: " + (storage_end - storage_start)); 
+	} else {
+		x.innerHTML = "Sorry, your browser does not support Web Storage...";
+	}    
+}
+</script>
+<!--
+<frameset cols="25%,*,25%">
+  <frame id="window_frames" name="window_frames" src="https://baidu.com"></frame>
+  <frame  id="window_frames" name="window_frames" src="./t1.html"></frame>
+  <frame onload="windowtop()" id="window_frames" name="window_frames" src="http://baidu.com"></frame>
+  <frame src="http://www.w3schools.com/jsref/frame_b.htm"></frame>
+  <frame onload="windowtop()" src="http://www.w3schools.com/jsref/frame_c.htm"></frame>
+  <frame onload="test()" src="https://www.comp.nus.edu.sg"></frame>
+</frameset>
+-->
+<p id="demo">hi2hi2</p>
+<body>
+
+</br>
+
+<button type="button" onclick="test()">Run Test</button>
+</br></br>
+<iframe id="drive" src='https://www.comp.nus.edu.sg/~huhong/attack/t1.html'></iframe>
+<iframe id ="goo" src=""></iframe>
+<div id="add"></div>
+</br></br>
+
+<button type="button" onclick="access()">contentDocument</button>
+<button onclick="setting()">Set Google</button>
+<button onclick=gd()>set</button>
+<button onclick="setCanvas()">getImageData</button>
+<button onclick="getStorage()">getStorage</button>
+<button onclick="setStorage()">setStorage</button>
+<button onclick="window_open()">window_open</button>
+<button onclick="window_top()">window_top</button>
+</br>
+<button onclick="openWin()">openWin</button>
+<button onclick="accessWin()">accessWin</button>
+
+<h2>Accessing IndexedDB</h2>
+<h3 id="toc-final">The final product</h3>
+<ul id="todoItems"></ul>
+<input type="text" id="todo" name="todo" placeholder="What do you need to do?" style="width: 200px;">
+<input type="submit" value="Add Todo Item" onclick="addTodo(); return false;">
+<script>
+    var html5rocks = {};
+    window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;
+
+    if ('webkitIndexedDB' in window) {
+      window.IDBTransaction = window.webkitIDBTransaction;
+      window.IDBKeyRange = window.webkitIDBKeyRange;
+    }
+
+    html5rocks.indexedDB = {};
+    html5rocks.indexedDB.db = null;
+
+    html5rocks.indexedDB.onerror = function(e) {
+      console.log(e);
+    };
+
+    html5rocks.indexedDB.open = function() {
+      var version = 1;
+      var request = indexedDB.open("todos", version);
+
+      // We can only create Object stores in a versionchange transaction.
+      request.onupgradeneeded = function(e) {
+        var db = e.target.result;
+
+        // A versionchange transaction is started automatically.
+        e.target.transaction.onerror = html5rocks.indexedDB.onerror;
+
+        if(db.objectStoreNames.contains("todo")) {
+          db.deleteObjectStore("todo");
+        }
+
+        var store = db.createObjectStore("todo",
+          {keyPath: "timeStamp"});
+      };
+
+      request.onsuccess = function(e) {
+        html5rocks.indexedDB.db = e.target.result;
+        html5rocks.indexedDB.getAllTodoItems();
+      };
+
+      request.onerror = html5rocks.indexedDB.onerror;
+    };
+
+    html5rocks.indexedDB.addTodo = function(todoText) {
+      var db = html5rocks.indexedDB.db;
+      var trans = db.transaction(["todo"], "readwrite");
+      var store = trans.objectStore("todo");
+
+      var data = {
+        "text": todoText,
+        "timeStamp": new Date().getTime()
+      };
+
+      var request = store.put(data);
+
+      request.onsuccess = function(e) {
+        html5rocks.indexedDB.getAllTodoItems();
+      };
+
+      request.onerror = function(e) {
+        console.log("Error Adding: ", e);
+      };
+    };
+
+    html5rocks.indexedDB.deleteTodo = function(id) {
+      var db = html5rocks.indexedDB.db;
+      var trans = db.transaction(["todo"], "readwrite");
+      var store = trans.objectStore("todo");
+
+      var request = store.delete(id);
+
+      request.onsuccess = function(e) {
+        html5rocks.indexedDB.getAllTodoItems();
+      };
+
+      request.onerror = function(e) {
+        console.log("Error Adding: ", e);
+      };
+    };
+
+    html5rocks.indexedDB.getAllTodoItems = function() {
+      var todos = document.getElementById("todoItems");
+      todos.innerHTML = "";
+
+      var db = html5rocks.indexedDB.db;
+      var trans = db.transaction(["todo"], "readwrite");
+      var store = trans.objectStore("todo");
+
+      // Get everything in the store;
+      var keyRange = IDBKeyRange.lowerBound(0);
+      var cursorRequest = store.openCursor(keyRange);
+
+      cursorRequest.onsuccess = function(e) {
+        var result = e.target.result;
+        if(!!result == false)
+          return;
+
+        renderTodo(result.value);
+        result.continue();
+      };
+
+      cursorRequest.onerror = html5rocks.indexedDB.onerror;
+    };
+
+    function renderTodo(row) {
+      var todos = document.getElementById("todoItems");
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      var t = document.createTextNode(row.text);
+
+      a.addEventListener("click", function() {
+        html5rocks.indexedDB.deleteTodo(row.timeStamp);
+      }, false);
+
+      a.href = "#";
+      a.textContent = " [Delete]";
+      li.appendChild(t);
+      li.appendChild(a);
+      todos.appendChild(li);
+    }
+
+    function addTodo() {
+      var todo = document.getElementById("todo");
+      html5rocks.indexedDB.addTodo(todo.value);
+      todo.value = "";
+    }
+
+    function init() {
+      html5rocks.indexedDB.open();
+    }
+
+    function test_indexedDB() {
+      var version = 1;
+      var indexedDB_start = performance.now();
+      var request = indexedDB.open("todos", version);
+      var indexedDB_end   = performance.now();
+      console.log("success time: " + (indexedDB_end - indexedDB_start));
+    }
+    window.addEventListener("DOMContentLoaded", init, false);
+
+var openWin_x;
+
+function openWin() {
+    openWin_x = window.open("https://www.google.com/", 'fds', 'width=200, height=300');
+}
+
+function accessWin() {
+    openWin_start = performance.now();
+    try {
+    	openWin_x.document.body.innerHTML='test';
+    	openWin_end   = performance.now();
+    	console.log("success time: " + (openWin_end - openWin_start)); 
+	} catch (error) {
+    	openWin_end   = performance.now();
+    	console.log("failed time: " + (openWin_end - openWin_start)); 
+	}
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,255 @@
+html {
+  font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+/*  background-color: #FFE58C; */
+}
+
+body {
+	margin: auto;
+	padding: auto;
+	width: 1024px;
+
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	line-height: 1.4em;
+/*	position: relative; */
+/*  background-color: #F2CC4C; */
+}
+
+.banner h1 {
+    margin: 0px;
+    padding: 6px;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+}
+
+a:link {
+}
+
+a:visited {
+}
+
+a:hover {
+  background-color: #FFE58C;
+}
+
+.banner {
+  position: relative;
+  height: 65px;
+  padding-left: 6px;
+  background-color: #F2CC4C;
+
+}
+
+#mainlogo {
+  position: absolute;
+  right: 6px;
+  z-index: 10;
+  border: 0px;
+}
+
+.content {
+  padding: 6px;
+  position: relative;
+  background-color: white;
+  background-image: url(images/content-fade.png);
+  background-repeat: repeat-x;
+}
+
+.content ul {
+  list-style: square;
+}
+
+.sidebar {
+  width: 200px;
+  float: right;
+  margin-top: 30px;
+}
+
+.sidebar .box {
+  padding: 3px;
+  border: 1px solid #F2CC4C;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.box ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.box h3 {
+  margin: 0px;
+}
+
+.footer {
+  position: relative;
+  height: 65px;
+  background-image: url(images/berkeley-logo.gif);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+.footer .logo {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.expandable {
+}
+
+.expandable button {
+  float: right;
+}
+
+.details{
+  font-size: large;
+}
+
+.clear {
+  clear: both;
+}
+
+table.data {
+  border: solid 1px #EEE;
+}
+ 
+.data th {
+  vertical-align: top;
+  background: #EEE;
+}
+ 
+.data td {
+  font-family: monospace;
+  vertical-align: top;
+  background: #F9F9F9;
+}
+
+.paperlist li {
+  list-style: none;
+}
+
+.pdf {
+  padding-left: 48px;
+  background-image: url(images/icons/pdf-48.png);
+  background-repeat: no-repeat;
+}
+
+.paper {
+  margin: 20px 0px;
+}
+
+.paper .title {
+  font-family:"helvetica neue";
+  font-size: 15pt;
+  font-weight: 600;
+  font-style: normal;
+  text-align: left; 
+}
+
+.booktitle {
+  font-style: italic;
+}
+
+.bibtexbutton {
+  margin-left: 0.5em;
+  font-size: large;
+}
+
+.bibtex {
+  font-family: monospace;
+  font-size: 10pt;
+}
+
+.bibtex .entry {
+  padding-left: 60px;
+  text-indent: -40px;
+}
+
+.papermetadata { margin: 5px 0px;}
+.papermetadata span { padding-right:2px; display:none;}
+.papermetadata a { color:blue ;}
+.papermetadata .abstract { display:none; width:95%; text-align: justify; font-size:100%; border:2px solid #F2CC4C; padding:0em; }
+
+body { 
+  color: #000000;
+  font-family:"helvetica neue";
+  font-size: 18pt;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left;
+}
+li {
+    font-family:"helvetica neue";
+    font-size: 15pt;
+    font-weight: 300;
+    font-style: normal;
+    text-align: left; }
+.conf{
+    font-family:"helvetica neue";
+    font-size: 12pt;
+    font-weight: 600;
+    font-style: normal;
+    text-align: left; 
+}
+.announcement{
+    color: #DD0000;
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+    background-color: #F2CC4C;
+}
+.papertitle{
+    font-family:"helvetica neue";
+    font-size: 15pt;
+    font-weight: 600;
+    font-style: normal;
+    text-align: left; 
+}
+p { color: #000000;
+  font-family:"helvetica neue";
+  font-size: 18pt;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left; }
+td { color: #000000;
+  font-family:"helvetica neue";
+  font-size: 18pt;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left; }
+h2 { color: #000000;
+  font-family:"helvetica neue";
+  font-size: 24pt;
+  font-weight: 600;
+  font-style: normal;
+  text-align: left;  
+  text-decoration: none;}
+h3 { color: #000000;
+  font-family:"helvetica neue";
+  font-size: 20pt;
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;  
+  font-style: bold;
+}
+h4 { color: #000000;
+  font-family:"helvetica neue";
+  font-size: 18pt;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left;   
+  font-style: italic;
+}
+
+.imgborder {
+-moz-box-shadow: 5px 5px 2px #888;
+-webkit-box-shadow: 5px 5px 2px #888;
+box-shadow: 5px 5px 2px #888;
+}
+
+
+ul { font-weight: bolder; }

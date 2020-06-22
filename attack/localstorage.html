@@ -1,0 +1,58 @@
+<html><body>
+<h2>Accessing Localstorage</h2>
+
+<p>Click the button to get your localstorage.</p>
+
+<button onclick="getStorage()">getLocalstorage</button>
+<button onclick="setStorage()">setLocalstorage</button>
+
+</br></br>
+<button onclick="test()">test</button>
+
+<p id="demo">hi2hi2</p>
+
+<script>
+function test()
+{
+	var count = 100;
+	var xhrinterval = setInterval(
+		function()
+		{
+			count -= 1;
+			if(count>=0){
+				//loadXMLDoc("https://www.google.com.sg/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
+				//access();
+				getStorage();;
+			}
+			else
+				clearInterval(xhrinterval);
+		},
+		3000);
+}
+var x = document.getElementById("demo");
+function getStorage()
+{
+	// Check browser support
+	if (typeof(Storage) != "undefined") {
+		// Retrieve
+        var storage_start = performance.now(); 
+		x.innerHTML = localStorage.getItem("hi2");
+        var storage_end   = performance.now();
+        console.log("success time: " + (storage_end - storage_start)); 
+	} else {
+		x.innerHTML = "Sorry, your browser does not support Web Storage...";
+	}    
+}
+function setStorage()
+{
+	// Check browser support
+	if (typeof(Storage) != "undefined") {
+		// Store
+		localStorage.setItem("hi2", "hi2hi2");
+	} else {
+		x.innerHTML = "Sorry, your browser does not support Web Storage...";
+	}    
+}
+
+</script>
+</body></html>
