@@ -15,6 +15,37 @@
         line-height: 1.4em;
       }
 
+      .collapsible {
+        cursor: pointer;
+      }
+
+      .collapsible:after {
+        font-weight: bold;
+        float: right;
+        content: '\002B';
+      }
+
+      .active:after {
+        content: "\2212";
+      }
+
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        #background-color: #f1f1f1;
+      }
+
+      pre {
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        border-color: lightgrey;
+        padding: 5px 5px 5px 5px;
+        overflow: auto;
+        background-color: #f1f1f1
+      } 
+
       img { vertical-align: bottom; }
   
       a {  color: #008cba; text-decoration: none; }
@@ -75,21 +106,6 @@
     <h3>Conference Proceedings</h3>
     <ol reversed>
 
-      <li>
-        <span style="font-weight: bold;float:left;">
-          One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)
-        </span> 
-        <span style="font-weight: bold;float:right;">
-          <!--<a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
-          <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
-        </span>
-        <br>
-        Yongheng Chen, Rui Zhong, <u>Hong Hu</u>, Hangfan Zhang, Yupeng Yang, Dinghao Wu and Wenke Lee.<br>
-        In <span style="font-style: italic;">
-          Proceedings of the 41st IEEE Symposium on Security and Privacy (Oakland 2021).
-        </span>
-        <br>
-      </li>
 
       <li>
         <span style="font-weight: bold;float:left;">
@@ -138,6 +154,36 @@
         </span>
         <br>
       </li>
+
+      <li class=collapsible>
+        <span style="font-weight: bold;float:left;">
+          One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)
+        </span> 
+        <span style="font-weight: bold;float:right;">
+          <!--<a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
+          <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
+        </span>
+        <br>
+        Yongheng Chen, Rui Zhong, <u>Hong Hu</u>, Hangfan Zhang, Yupeng Yang, Dinghao Wu and Wenke Lee.<br>
+        In <span style="font-style: italic;">
+          Proceedings of the 41st IEEE Symposium on Security and Privacy (Oakland 2021).
+        </span>
+      </li>
+      <div class="content">
+        Language processors, such as compilers and interpreters, are indispensable in building modern software. Errors in language processors can lead to severe consequences, like incorrect functionalities or even malicious attacks. However, it is not trivial to automatically test language processors to find bugs. Existing testing methods (or fuzzers) either fail to generate high-quality (i.e., semantically correct) test cases, or only support limited programming languages.
+
+
+        <p>In this paper, we propose POLYGLOT, a generic fuzzing framework that generates high-quality test cases for exploring processors of different programming languages. To achieve the generic applicability, POLYGLOT neutralizes the difference in syntax and semantics of programming languages with a uniform immediate representation (IR). To improve the language validity, POLYGLOT performs constrained mutation and semantic validation to preserve syntactic correctness and fix semantic errors. We have applied POLYGLOT on 21 popular language processors of 9 programming languages, and identified 173 new bugs, 113 of which are fixed with 18 CVEs assigned. Our experiments show that POLYGLOT can support a wide range of programming languages, and outperforms existing fuzzers with up to 30× improvement in code coverage.</p>
+
+        <pre>@inproceedings{chen:polyglot,
+  title        = {{One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)}},
+  author       = {Yongheng Chen and Rui Zhong and Hong Hu and Hangfan Zhang and Yupeng Yang and Dinghao Wu and Wenke Lee},
+  booktitle    = {Proceedings of the 42nd IEEE Symposium on Security and Privacy (Oakland)},
+  month        = may,
+  year         = 2021,
+  address      = {San Francisco, CA},
+}</pre>
+      </div>
 
       <li>
         <span style="font-weight: bold;float:left;">
@@ -524,4 +570,22 @@
     <hr>
 
   </body>
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+    });
+  }
+  </script>
+
 </html>
