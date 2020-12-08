@@ -22,11 +22,10 @@
       .collapsible:after {
         font-weight: bold;
         float: right;
-        content: '\002B';
+        content: '\2913';
       }
-
-      .active:after {
-        content: "\2212";
+      .active::after {
+        content: "\2912";
       }
 
       .content {
@@ -45,6 +44,18 @@
         overflow: auto;
         background-color: #f1f1f1
       } 
+
+      .pub-title {
+        font-weight: bold;
+        float:left;
+      }
+      .pub-links {
+        font-weight: bold;
+        float:right;
+      }
+      .pub-conf {
+        font-style: italic;
+      }
 
       img { vertical-align: bottom; }
   
@@ -108,64 +119,77 @@
 
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Sharing More and Checking Less: Leaveraging Common Input Keywords to Detect Bugs in Embedded Systems (conditionally accepted)
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <!--<a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
         </span>
         <br>
         Libo Chen, Yanhao Wang, Quanpu Cai, Yunfan Zhan, <u>Hong Hu</u>, Jiaqi Linghu, Qinsheng Hou, Chao Zhang, Haixin Duan, and Zhi Xue.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
         <br>
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Abusing Hidden Properties to Attack the Node.js Ecosystem (conditionally accepted)
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <!--<a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
         </span>
         <br>
         Feng Xiao, Jianwei Huang, Yichang Xiong, Guangliang Yang, <u>Hong Hu</u>, Guofei Gu, and Wenke Lee.<br>
-        In <span style="font-style: italic;">
-          Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
-        </span>
-        <br>
-      </li>
-
-      <li>
-        <span style="font-weight: bold;float:left;">
-          Preventing Use-After-Free Attacks with Fast Forward Allocation (to appear)
-        </span> 
-        <span style="font-weight: bold;float:right;">
-          <a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
-          <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
-        </span>
-        <br>
-        Brian Wickman, <u>Hong Hu</u>, Insu Yun, Daehee Jang, JungWon Lim, Sanidhya Kashyap, and Taesoo Kim.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
         <br>
       </li>
 
       <li class=collapsible>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
+          Preventing Use-After-Free Attacks with Fast Forward Allocation (to appear)
+        </span> 
+        <span class=pub-links>
+          <a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
+          <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
+        </span>
+        <br>
+        Brian Wickman, <u>Hong Hu</u>, Insu Yun, Daehee Jang, JungWon Lim, Sanidhya Kashyap, and Taesoo Kim.<br>
+        In <span class=pub-conf>
+          Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
+        </span>
+      </li>
+      <div class="content">
+        Memory-unsafe languages are widely used to implement critical systems like kernels and browsers, leading to thousands of memory safety issues every year. A use-after-free bug is a temporal memory error where the program accidentally visits a freed memory location. Recent studies show that useafter-free is one of the most exploited memory vulnerabilities. Unfortunately, previous efforts to mitigate use-after-free bugs are not widely deployed in real-world programs due to either inadequate accuracy or high performance overhead.
+
+        <p>In this paper, we propose to resurrect the idea of one-time allocation (OTA) and provide a practical implementation with efficient execution and moderate memory overhead. With onetime allocation, the memory manager always returns a distinct memory address for each request. Since memory locations are not reused, attackers cannot reclaim freed objects, and thus cannot exploit use-after-free bugs. We utilize two techniques to render OTA practical: batch page management and the fusion of bump-pointer and fixed-size bins memory allocation styles. Batch page management helps reduce the number of system calls which negatively impact performance, while blending the two allocation methods mitigates the memory overhead and fragmentation issues. We implemented a prototype, called FFmalloc, to demonstrate our techniques. We evaluated FFmalloc on widely used benchmarks and real-world large programs. FFmalloc successfully blocked all tested useafter-free attacks while introducing moderate overhead. The results show that OTA can be a strong and practical solution to thwart use-after-free threats.</p>
+
+        <pre>@inproceedings{wickman:ffmalloc,
+  title        = {{Preventing Use-After-Free Attacks with Fast Forward Allocation (to appear)}},
+  author       = {Brian Wickman and Hong Hu and Insu Yun and Daehee Jang and JungWon Lim and Sanidhya Kashyap and Taesoo Kim},
+  booktitle    = {Proceedings of the 30th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2021,
+  address      = {Vancouver, B.C., Canada},
+}</pre>
+      </div>
+
+      <li class=collapsible>
+        <span class=pub-title>
           One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <!--<a href="https://github.com/bwickman97/ffmalloc"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/ffmalloc.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
         </span>
         <br>
         Yongheng Chen, Rui Zhong, <u>Hong Hu</u>, Hangfan Zhang, Yupeng Yang, Dinghao Wu and Wenke Lee.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 41st IEEE Symposium on Security and Privacy (Oakland 2021).
         </span>
       </li>
@@ -186,26 +210,26 @@
       </div>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)
         </span> 
-        <!--<span style="font-weight: bold;float:right;">-->
+        <!--<span class=pub-links>-->
           <!--<a href="https://github.com/s3team/Squirrel"><img alt="Website" src="./images/www.svg" height=15px></a>-->
           <!--<a href="./papers/squirrel.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>-->
           <!--</span>-->
         <br>
         Jinho Jung, Stephen Tong, <u>Hong Hu</u>, Jungwon Lim, Yonghwi Jin, and Taesoo Kim.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 28th Network and Distributed System Security Symposium (NDSS 2021).
         </span>
         <br>
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           SQUIRREL: Testing Database Management Systems with Language Validity and Coverage Feedback
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/s3team/Squirrel"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/squirrel-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/squirrel-slides-long.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
@@ -213,7 +237,7 @@
         </span> 
         <br>
         Rui Zhong, Yongheng Chen, <u>Hong Hu</u>, Hangfan Zhang, Wenke Lee and Dinghao Wu.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 27th ACM Conference on Computer and Communications Security (CCS 2020).
           [Acc Rate: 16.9%]
         </span>
@@ -221,17 +245,17 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           APOLLO: Automatic Detection and Diagnosis of Performance Regressions in Database Systems
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/sslab-gatech/apollo"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/apollo-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/apollo.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Jinho Jung, <u>Hong Hu</u>, Joy Arulraj, Taesoo Kim, and Woonhak Kang.<br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 46th International Conference on Very Large Data Bases (VLDB 2020).
           [Acc Rate: 25%]
         </span>
@@ -239,10 +263,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           DESENSITIZATION: Privacy-Aware and Attack-Preserving Crash Report
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/sslab-gatech/desensitization"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/desensitization-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/desensitization-ndss20.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -251,7 +275,7 @@
         Ren Ding*, <u>Hong Hu*</u>, Wen Xu, and Taesoo Kim. 
         <i>*Co-first Author</i>
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 27th Network and Distributed System Security Symposium (NDSS 2020). 
           [Acc Rate: 17.0%]
         </span>
@@ -260,17 +284,17 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Where Does It Go? Refining Indirect-Call Targets with Multi-Layer Type Analysis
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/typedive-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/typedive.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Kangjie Lu, and <u>Hong Hu</u>.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 26th ACM Conference on Computer and Communications Security (CCS 2019). 
           [Acc Rate: 16.0%]
         </span>
@@ -279,10 +303,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           RAZOR: A Framework for Post-deployment Software Debloating
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/cxreet/razor"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/razor-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/razor.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -291,7 +315,7 @@
         Chenxiong Qian*, <u>Hong Hu*</u>, Mansour A Alharthi, Pak Ho Chung, Taesoo Kim, and Wenke Lee.
         <i>* Co-first Author</i>
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 28th USENIX Security Symposium (USENIX 2019). 
           [Acc Rate: 16%]
         </span>
@@ -299,10 +323,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Fuzzification: Anti-Fuzzing Techniques
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/sslab-gatech/fuzzification"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/fuzzification-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/fuzzification.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -310,7 +334,7 @@
         <br>
         Jinho Jung, <u>Hong Hu</u>, David Solodukhin, Daniel Pagan, Kyu Hyung Lee, and Taesoo Kim.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 28th USENIX Security Symposium (USENIX 2019). 
           [Acc Rate: 16%]
         </span>
@@ -318,10 +342,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Enforcing Unique Code Target Property for Control-Flow Integrity
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/uCFI-GATech"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/ucfi-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/ucfi.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -329,7 +353,7 @@
         <br>
         <u>Hong Hu</u>, Chenxiong Qian, Carter Yagemann, Simon Pak Ho Chung, William R. Harris, Taesoo Kim, and Wenke Lee.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 25th ACM Conference on Computer and Communications Security (CCS 2018). 
           [Acc Rate: 16.6%]
         </span>
@@ -337,10 +361,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           The "Web/Local" Boundary Is Fuzzy – A Security Study of Chrome's Process-based Sandboxing
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://github.com/jiayaoqijia/Web-Local-Attacks"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/chrome_ccs_yaoqi.pptx"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/chrome_ccs.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -348,7 +372,7 @@
         <br>
         Yaoqi Jia, Zheng Leong Chua, <u>Hong Hu</u>, Shuo Chen, Prateek Saxena and Zhenkai Liang.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 23rd ACM Conference on Computer and Communications Security (CCS 2016). 
           [Acc Rate: 16.5%]  
         </span>
@@ -356,10 +380,10 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Data-Oriented Programming: On the Expressiveness of Non-Control Data Attacks
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="http://huhong789.github.io/advanced-DOP/"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/DOP-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/dop.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -367,7 +391,7 @@
         <br>
         <u>Hong Hu</u>, Shweta Shinde, Sendroiu Adrian, Zheng Leong Chua, Prateek Saxena and Zhenkai Liang.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 37th IEEE Symposium on Security and Privacy (Oakland 2016).
           [Acc Rate: 13.8%]  
         </span>
@@ -375,17 +399,17 @@
       </li>
     
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Identifying Arbitrary Memory Access Vulnerabilities in Privilege-Separated Software
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/DUI.pptx"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/DUI.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         <u>Hong Hu</u>, Zheng Leong Chua, Zhenkai Liang and Prateek Saxena.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 20th European Symposium on Research in Computer Security (ESORICS 2015).
           [Acc Rate: 20%]  
         </span>
@@ -393,10 +417,10 @@
       </li>
     
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Automatic Generation of Data-Oriented Exploits
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="http://huhong789.github.io/advanced-DOP/"><img alt="Website" src="./images/www.svg" height=15px></a>
           <a href="./papers/flowstitch-slides.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
           <a href="./papers/flowstitch.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
@@ -404,7 +428,7 @@
         <br>
         <u>Hong Hu</u>, Zheng Leong Chua, Sendroiu Adrian, Prateek Saxena and Zhenkai Liang.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 24th USENIX Security Symposium (USENIX 2015).
           [Acc Rate: 16%]  
         </span>
@@ -412,16 +436,16 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           DroidVault: A Trusted Data Vault for Android Devices
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/DroidVault.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Xiaolei Li, <u>Hong Hu</u>, Guangdong Bai, Yaoqi Jia, Zhenkai Liang and Prateek Saxena.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 19th International Conference on Engineering of Complex Computer Systems (ICECCS 2014).
           [Acc Rate: 27.4%]  
         </span>
@@ -430,16 +454,16 @@
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Practical Analysis Framework for Software-based Attestation Scheme
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/Software-Attestation.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Li Li, <u>Hong Hu</u>, Jun Sun, Yang Liu and Jin Song Dong.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 16th International Conference on Formal Engineering Methods (ICFEM 2014).
           [Acc Rate: 30%]  
         </span>
@@ -447,16 +471,16 @@
       </li>
     
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           A Quantitative Evaluation of Privilege Separation in Web Browser Designs
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/esorics13.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Xinshu Dong, <u>Hong Hu</u>, Zhenkai Liang and Prateek Saxena.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           Proceedings of the 18th European Symposium on Research in Computer Security (ESORICS 2013).
           [Acc Rate: 17.8%]  
         </span>
@@ -469,16 +493,16 @@
     <ol reversed>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Discovering Hidden Properties to Attack the Node.js Ecosystem
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="https://www.blackhat.com/us-20/briefings/schedule/#discovering-hidden-properties-to-attack-the-nodejs-ecosystem-19594"><img alt="Paper" src="./images/www.svg" height=15px></a>
         </span> 
         <br>
         Feng Xiao, Jianwei Huang, Yichang Xiong, Guangliang Yang, <u>Hong Hu</u>, Guofei Gu and Wenke Lee.
         <br>
-        <span style="font-style: italic;">
+        <span class=pub-conf>
           Black Hat USA Briefings (Black Hat USA 2020)
         </span>
         <br>
@@ -491,39 +515,39 @@
         <br>
         Mansour Alharthi, <u>Hong Hu</u>, Hyungon Moon, and Taesoo Kim.
         <br>
-        <span style="font-style: italic;">
+        <span class=pub-conf>
           First International Workshop on SoftwAre debLoating And Delayering (SALAD 2018).
         </span>
         <br>
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Automatically Assessing Crashes from Heap Overflows (short paper).
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/HCSifter.pdf"><img alt="Paper" src="./images/file.svg" height=15px></a>
         </span> 
         <br>
         Liang He, Yan Cai, <u>Hong Hu</u>, Purui Su, Zhenkai Liang, Yi Yang, Huafeng Huang, Jia Yan, Xiangkun Jia, and Dengguo Feng.
         <br>
-        <span style="font-style: italic;">
+        <span class=pub-conf>
           Proceedings of the 32nd IEEE/ACM International Conference on Automated Software Engineering (ASE 2017).
         </span>
         <br>
       </li>
 
       <li>
-        <span style="font-weight: bold;float:left;">
+        <span class=pub-title>
           Dereference Under the Influence (DUI), You Can't Afford It
         </span> 
-        <span style="font-weight: bold;float:right;">
+        <span class=pub-links>
           <a href="./papers/ndss15-DUI.pdf"><img alt="Slides" src="./images/slides.svg" height=15px></a>
         </span> 
         <br>
         <u>Hong Hu</u>, Zheng Leong Chua, Zhenkai Liang and Prateek Saxena.
         <br>
-        In <span style="font-style: italic;">
+        In <span class=pub-conf>
           22nd Network and Distributed System Security Symposium (NDSS 2015).
         </span>
         <br>
@@ -572,20 +596,34 @@
   </body>
 
   <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+    function collapse_it(c, i) {
+      console.log(coll);
+      console.log(i)
+      c[i].classList.toggle("active");
+      var content = c[i].nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
 
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
+      var j;
+      for (j = 0; j < c.length; j++) {
+        if (j == i) continue;
+        var other_content = c[j].nextElementSibling;
+        if (other_content.style.display === "block") {
+          c[j].classList.toggle("active")
+          other_content.style.display = "none";
         }
-    });
-  }
+      } 
+    }
+
+    var coll = document.getElementsByClassName("collapsible");
+    var index;
+
+    for (index = 0; index < coll.length; index++) {
+      coll[index].addEventListener("click", collapse_it.bind(null, coll, index));
+    }
   </script>
 
 </html>
