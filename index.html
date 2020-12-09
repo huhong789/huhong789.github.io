@@ -20,6 +20,10 @@
         cursor: pointer;
       }
 
+      .collapsible:hover {
+        background-color: #f1f1f1;
+      }
+
       .collapsible:hover::after {
         font-weight: bold;
         float: right;
@@ -42,7 +46,6 @@
         padding: 0 18px;
         display: none;
         overflow: hidden;
-        #background-color: #f1f1f1;
       }
 
       pre {
@@ -58,7 +61,6 @@
       .pub-title {
         font-weight: bold;
         float:left;
-        display: block;
       }
       .pub-links {
         font-weight: bold;
@@ -174,9 +176,32 @@
         </span>
       </li>
       <div class="content">
-        Memory-unsafe languages are widely used to implement critical systems like kernels and browsers, leading to thousands of memory safety issues every year. A use-after-free bug is a temporal memory error where the program accidentally visits a freed memory location. Recent studies show that useafter-free is one of the most exploited memory vulnerabilities. Unfortunately, previous efforts to mitigate use-after-free bugs are not widely deployed in real-world programs due to either inadequate accuracy or high performance overhead.
+        Memory-unsafe languages are widely used to implement critical systems
+        like kernels and browsers, leading to thousands of memory safety issues
+        every year. A use-after-free bug is a temporal memory error where the
+        program accidentally visits a freed memory location. Recent studies
+        show that useafter-free is one of the most exploited memory
+        vulnerabilities. Unfortunately, previous efforts to mitigate
+        use-after-free bugs are not widely deployed in real-world programs due
+        to either inadequate accuracy or high performance overhead.
 
-        <p>In this paper, we propose to resurrect the idea of one-time allocation (OTA) and provide a practical implementation with efficient execution and moderate memory overhead. With onetime allocation, the memory manager always returns a distinct memory address for each request. Since memory locations are not reused, attackers cannot reclaim freed objects, and thus cannot exploit use-after-free bugs. We utilize two techniques to render OTA practical: batch page management and the fusion of bump-pointer and fixed-size bins memory allocation styles. Batch page management helps reduce the number of system calls which negatively impact performance, while blending the two allocation methods mitigates the memory overhead and fragmentation issues. We implemented a prototype, called FFmalloc, to demonstrate our techniques. We evaluated FFmalloc on widely used benchmarks and real-world large programs. FFmalloc successfully blocked all tested useafter-free attacks while introducing moderate overhead. The results show that OTA can be a strong and practical solution to thwart use-after-free threats.</p>
+        <p>In this paper, we propose to resurrect the idea of one-time
+        allocation (OTA) and provide a practical implementation with efficient
+        execution and moderate memory overhead. With onetime allocation, the
+        memory manager always returns a distinct memory address for each
+        request. Since memory locations are not reused, attackers cannot
+        reclaim freed objects, and thus cannot exploit use-after-free bugs. We
+        utilize two techniques to render OTA practical: batch page management
+        and the fusion of bump-pointer and fixed-size bins memory allocation
+        styles. Batch page management helps reduce the number of system calls
+        which negatively impact performance, while blending the two allocation
+        methods mitigates the memory overhead and fragmentation issues. We
+        implemented a prototype, called FFmalloc, to demonstrate our
+        techniques. We evaluated FFmalloc on widely used benchmarks and
+        real-world large programs. FFmalloc successfully blocked all tested
+        useafter-free attacks while introducing moderate overhead. The results
+        show that OTA can be a strong and practical solution to thwart
+        use-after-free threats.</p>
 
         <pre>@inproceedings{wickman:ffmalloc,
   title        = {{Preventing Use-After-Free Attacks with Fast Forward Allocation (to appear)}},
@@ -203,10 +228,28 @@
         </span>
       </li>
       <div class="content">
-        Language processors, such as compilers and interpreters, are indispensable in building modern software. Errors in language processors can lead to severe consequences, like incorrect functionalities or even malicious attacks. However, it is not trivial to automatically test language processors to find bugs. Existing testing methods (or fuzzers) either fail to generate high-quality (i.e., semantically correct) test cases, or only support limited programming languages.
+        Language processors, such as compilers and interpreters, are
+        indispensable in building modern software. Errors in language
+        processors can lead to severe consequences, like incorrect
+        functionalities or even malicious attacks. However, it is not trivial
+        to automatically test language processors to find bugs. Existing
+        testing methods (or fuzzers) either fail to generate high-quality
+        (i.e., semantically correct) test cases, or only support limited
+        programming languages.
 
 
-        <p>In this paper, we propose POLYGLOT, a generic fuzzing framework that generates high-quality test cases for exploring processors of different programming languages. To achieve the generic applicability, POLYGLOT neutralizes the difference in syntax and semantics of programming languages with a uniform immediate representation (IR). To improve the language validity, POLYGLOT performs constrained mutation and semantic validation to preserve syntactic correctness and fix semantic errors. We have applied POLYGLOT on 21 popular language processors of 9 programming languages, and identified 173 new bugs, 113 of which are fixed with 18 CVEs assigned. Our experiments show that POLYGLOT can support a wide range of programming languages, and outperforms existing fuzzers with up to 30× improvement in code coverage.</p>
+        <p>In this paper, we propose POLYGLOT, a generic fuzzing framework that
+        generates high-quality test cases for exploring processors of different
+        programming languages. To achieve the generic applicability, POLYGLOT
+        neutralizes the difference in syntax and semantics of programming
+        languages with a uniform immediate representation (IR). To improve the
+        language validity, POLYGLOT performs constrained mutation and semantic
+        validation to preserve syntactic correctness and fix semantic errors.
+        We have applied POLYGLOT on 21 popular language processors of 9
+        programming languages, and identified 173 new bugs, 113 of which are
+        fixed with 18 CVEs assigned. Our experiments show that POLYGLOT can
+        support a wide range of programming languages, and outperforms existing
+        fuzzers with up to 30× improvement in code coverage.</p>
 
         <pre>@inproceedings{chen:polyglot,
   title        = {{One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)}},
@@ -233,9 +276,27 @@
         </span>
       </li>
       <div class=content>
-        Fuzzing is an emerging technique to automatically validate programs and uncover bugs. It has been widely used to test many programs and has found thousands of security vulnerabilities. However, existing fuzzing efforts are mainly centered around Unix-like systems, as Windows imposes unique challenges for fuzzing: a closed-source ecosystem, the heavy use of graphical interfaces and the lack of fast process cloning machinery.
+        Fuzzing is an emerging technique to automatically validate programs and
+        uncover bugs. It has been widely used to test many programs and has
+        found thousands of security vulnerabilities. However, existing fuzzing
+        efforts are mainly centered around Unix-like systems, as Windows
+        imposes unique challenges for fuzzing: a closed-source ecosystem, the
+        heavy use of graphical interfaces and the lack of fast process cloning
+        machinery.
 
-        <p>In this paper, we propose two solutions to address the challenges Windows fuzzing faces. Our system, WINNIE, first tries to synthesize a harness for the application, a simple program that directly invokes target functions, based on sample executions. It then tests the harness, instead of the original complicated program, using an efficient implementation of fork on Windows. Using these techniques, WINNIE can bypass irrelevant GUI code to test logic deep within the application. We used WINNIE to fuzz 59 closed-source Windows executables, and it successfully generated valid fuzzing harnesses for all of them. In our evaluation, WINNIE can support 2.2× more programs than existing Windows fuzzers could, and identified 3.9× more program states and achieved 26.6× faster execution. In total, WINNIE found 61 unique bugs in 32 Windows executables.</p>
+        <p>In this paper, we propose two solutions to address the challenges
+        Windows fuzzing faces. Our system, WINNIE, first tries to synthesize a
+        harness for the application, a simple program that directly invokes
+        target functions, based on sample executions. It then tests the
+        harness, instead of the original complicated program, using an
+        efficient implementation of fork on Windows. Using these techniques,
+        WINNIE can bypass irrelevant GUI code to test logic deep within the
+        application. We used WINNIE to fuzz 59 closed-source Windows
+        executables, and it successfully generated valid fuzzing harnesses for
+        all of them. In our evaluation, WINNIE can support 2.2× more programs
+        than existing Windows fuzzers could, and identified 3.9× more program
+        states and achieved 26.6× faster execution. In total, WINNIE found 61
+        unique bugs in 32 Windows executables.</p>
 
         <pre>@inproceedings{jung:winnie,
   title        = {{WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)}},
@@ -247,7 +308,7 @@
 }</pre>
       </div>
 
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           SQUIRREL: Testing Database Management Systems with Language Validity and Coverage Feedback
         </span> 
@@ -264,8 +325,43 @@
           [Acc Rate: 16.9%]
         </span>
       </li>
+      <div class=content>
+        Fuzzing is an increasingly popular technique for verifying software 
+        functionalities and finding security vulnerabilities. However,
+        current mutation-based fuzzers cannot effectively test database
+        management systems (DBMSs), which strictly check inputs for
+        valid syntax and semantics. Generation-based testing can guarantee 
+        the syntax correctness of the inputs, but it does not utilize any
+        feedback, like code coverage, to guide the path exploration.
 
-      <li>
+        <p>In this paper, we develop Squirrel, a novel fuzzing framework
+        that considers both language validity and coverage feedback to test
+        DBMSs. We design an intermediate representation (IR) to maintain
+        SQL queries in a structural and informative manner. To generate
+        syntactically correct queries, we perform type-based mutations
+        on IR, including statement insertion, deletion and replacement.
+        To mitigate semantic errors, we analyze each IR to identify the
+        logical dependencies between arguments, and generate queries that
+        satisfy these dependencies. We evaluated Squirrel on four popular
+        DBMSs: SQLite, MySQL, PostgreSQL and MariaDB. Squirrel found 51
+        bugs in SQLite, 7 in MySQL and 5 in MariaDB. 52 of the bugs are fixed
+        with 12 CVEs assigned. In our experiment, Squirrel achieves 2.4×-
+        243.9× higher semantic correctness than state-of-the-art fuzzers,
+        and explores 2.0×-10.9× more new edges than mutation-based tools.
+        These results show that Squirrel is effective in finding memory
+        errors in database management systems.</p>
+
+        <pre>@inproceedings{zhong:squirrel,
+  title        = {{SQUIRREL: Testing Database Management Systems with Language Validity and Coverage Feedback}},
+  author       = {Rui Zhong and Yongheng Chen and Hong Hu and Hangfan Zhang and Wenke Lee and Dinghao Wu},
+  booktitle    = {Proceedings of the 27th ACM Conference on Computer and Communications Security (CCS)},
+  month        = nov,
+  year         = 2020,
+  address      = {Orlando, USA},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           APOLLO: Automatic Detection and Diagnosis of Performance Regressions in Database Systems
         </span> 
@@ -281,8 +377,46 @@
           [Acc Rate: 25%]
         </span>
       </li>
+      <div class=content>
+        The practical art of constructing database management systems (DBMSs)
+        involves a morass of trade-offs among query execution speed, query
+        optimization speed, standards compliance, feature parity, modularity,
+        portability, and other goals. It is no surprise that DBMSs, like all
+        complex software systems, contain bugs that can adversely affect their
+        performance. The performance of DBMSs is an important metric as it
+        determines how quickly an application can take in new information and
+        use it to make new decisions.
 
-      <li>
+        <p>Both developers and users face challenges while dealing with
+        performance regression bugs. First, developers usually find it
+        challenging to manually design test cases to uncover performance
+        regressions since DBMS components tend to have complex interactions.
+        Second, users encountering performance regressions are often unable to
+        report them, as the regression-triggering queries could be complex and
+        database-dependent. Third, developers have to expend a lot of effort on
+        localizing the root cause of the reported bugs, due to the system
+        complexity and software development complexity.</p>
+
+        <p>Given these challenges, this paper presents the design of APOLLO, a
+        toolchain for automatically detecting, reporting, and diagnosing
+        performance regressions in DBMSs. We demonstrate that APOLLO automates
+        the generation of regression-triggering queries, simplifies the bug
+        reporting process for users, and enables developers to quickly pinpoint
+        the root cause of performance regressions. By automating the detection
+        and diagnosis of performance regressions, APOLLO reduces the labor cost
+        of developing efficient DBMSs.</p>
+
+        <pre>@inproceedings{jung:apollo,
+  title        = {{APOLLO: Automatic Detection and Diagnosis of Performance Regressions in Database Systems}},
+  author       = {Jinho Jung and Hong Hu and Joy Arulraj and Taesoo Kim and Woonhak Kang},
+  booktitle    = {Proceedings of the 46th International Conference on Very Large Data Bases (VLDB)},
+  month        = aug,
+  year         = 2020,
+  address      = {Tokyo, Japan},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           DESENSITIZATION: Privacy-Aware and Attack-Preserving Crash Report
         </span> 
@@ -302,8 +436,42 @@
         <br>
         <font color=#DD0000> <i><b>* Top 10 Finalist, CSAW 2020</b></i></font>
       </li>
+      <div class=content>
+        Software vendors collect crash reports from end-users to assist in the
+        debugging and testing of their products. However, crash reports may
+        contain users' private information, like names and passwords, rendering
+        the user hesitant to share the reports with developers. We need a
+        mechanism to protect users' privacy in crash reports on the client side
+        while keeping sufficient information to support server-side debugging
+        and analysis.
 
-      <li>
+        <p>In this paper, we propose the DESENSITIZATION technique, which
+        generates privacy-aware and attack-preserving crash reports from
+        crashed executions. Our tool adopts lightweight methods to identify
+        bug-related and attack-related data from the memory, and removes other
+        data to protect users' privacy. Since a large portion of the
+        desensitized memory contains null bytes, we store crash reports in
+        spare files to save the network bandwidth and the server-side storage.
+        We prototype DESENSITIZATION and apply it to a large number of crashes
+        of real-world programs, like browsers and the JavaScript engine. The
+        result shows that our DESENSITIZATION technique can eliminate 80.9% of
+        non-zero bytes from coredumps, and 49.0% from minidumps. The
+        desensitized crash report can be 50.5% smaller than the original one,
+        which significantly saves resources for report submission and storage.
+        Our DESENSITIZATION technique is a push-button solution for the
+        privacy-aware crash report.</p>
+
+        <pre>@inproceedings{ding:desensitization,
+  title        = {{DESENSITIZATION: Privacy-Aware and Attack-Preserving Crash Report}},
+  author       = {Ren Ding and Hong Hu and Wen Xu and Taesoo Kim},
+  booktitle    = {Proceedings of the 2020 Annual Network and Distributed System Security Symposium (NDSS)},
+  month        = feb,
+  year         = 2020,
+  address      = {San Diego, CA},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           Where Does It Go? Refining Indirect-Call Targets with Multi-Layer Type Analysis
         </span> 
@@ -321,8 +489,52 @@
         <br>
         <font color=#DD0000> <i><b>* Awarded Best Paper</b></i></font>
       </li>
+      <div class=content>
+        System software commonly uses indirect calls to realize dynamic program
+        behaviors. However, indirect-calls also bring challenges to
+        constructing a precise control-flow graph that is a standard
+        prerequisite for many static program-analysis and system-hardening
+        techniques. Unfortunately, identifying indirect-call targets is a hard
+        problem. In particular, modern compilers do not recognize indirect-call
+        targets by default. Existing approaches identify indirect-call targets
+        based on type analysis that matches the types of function pointers and
+        the ones of address-taken functions. Such approaches, however, suffer
+        from a high false-positive rate as many irrelevant functions may share
+        the same types.
 
-      <li>
+        <p>In this paper, we propose a new approach, namely Multi-Layer Type
+        Analysis (MLTA), to effectively refine indirect-call targets for C/C++
+        programs. MLTA relies on an observation that function pointers are
+        commonly stored into objects whose types have a multi-layer type
+        hierarchy; before indirect calls, function pointers will be loaded from
+        objects with the same type hierarchy "layer by layer". By matching the
+        multi-layer types of function pointers and functions, MLTA can
+        dramatically refine indirect-call targets. MLTA is effective because
+        multi-layer types are more restrictive than single-layer types. It does
+        not introduce false negatives by conservatively tracking targets
+        propagation between multi-layer types, and the layered design allows
+        MLTA to safely fall back whenever the analysis for a layer becomes
+        infeasible. We have implemented MLTA in a system, namely TypeDive,
+        based on LLVM and extensively evaluated it with the Linux kernel, the
+        FreeBSD kernel, and the Firefox browser. Evaluation results show that
+        TypeDive can eliminate 86% to 98% more indirect-call targets than
+        existing approaches do, without introducing new false negatives. We
+        also demonstrate that TypeDive not only improves the scalability of
+        static analysis but also benefits semantic-bug detection. With
+        TypeDive, we have found 35 new deep semantic bugs in the Linux
+        kernel.</p>
+
+        <pre>@inproceedings{lu:typedive,
+  title        = {{Where Does It Go? Refining Indirect-Call Targets with Multi-Layer Type Analysis}},
+  author       = {Kangjie Lu and Hong Hu},
+  booktitle    = {Proceedings of the 26th ACM Conference on Computer and Communications Security (CCS)},
+  month        = nov,
+  year         = 2019,
+  address      = {London, UK},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           RAZOR: A Framework for Post-deployment Software Debloating
         </span> 
@@ -340,8 +552,40 @@
           [Acc Rate: 16%]
         </span>
       </li>
+      <div class=content>
+        Commodity software typically includes a large number of functionalities
+        for a broad user population. However, each individual user usually only
+        needs a small subset of all supported functionalities. The bloated code
+        not only hinders optimal execution, but also leads to a larger attack
+        surface. Recent works have explored program debloating as an emerging
+        solution to this problem. Unfortunately, these works require program
+        source code, limiting their real-world deployability.
 
-      <li>
+        <p>In this paper, we propose a practical debloating framework, RAZOR,
+        that performs code reduction for deployed binaries. Based on users’
+        specifications, our tool customizes the binary to generate a functional
+        program with minimal code size. Instead of only supporting given test
+        cases, RAZOR takes several control-flow heuristics to infer
+        complementary code that is necessary to support user-expected
+        functionalities. We evaluated RAZOR on commonly used benchmarks and
+        real-world applications, including the web browser FireFox and the
+        close-sourced PDF reader FoxitReader. The result shows that RAZOR is
+        able to reduce over 70% of the code from the bloated binary. It
+        produces functional programs and does not introduce any security
+        issues. RAZOR is thus a practical framework for debloating real-world
+        programs.</p>
+        
+        <pre>@inproceedings{qian:razor,
+  title        = {{RAZOR: A Framework for Post-deployment Software Debloating}},
+  author       = {Chenxiong Qian and Hong Hu and Mansour A Alharthi and Pak Ho Chung and Taesoo Kim and Wenke Lee},
+  booktitle    = {Proceedings of the 28th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2019,
+  address      = {Santa Clara, CA},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           Fuzzification: Anti-Fuzzing Techniques
         </span> 
@@ -358,8 +602,48 @@
           [Acc Rate: 16%]
         </span>
       </li>
+      <div class=content>
+        Fuzzing is a software testing technique that quickly and automatically
+        explores the input space of a program without knowing its internals.
+        Therefore, developers commonly use fuzzing as part of test integration
+        throughout the software development process. Unfortunately, it also
+        means that such a blackbox and the automatic natures of fuzzing are
+        appealing to adversaries who are looking for zero-day vulnerabilities.
 
-      <li>
+        <p>To solve this problem, we propose a new mitigation approach, called
+        Fuzzification , that helps developers protect the released, binary-only
+        software from attackers who are capable of applying state-of-the-art
+        fuzzing techniques. Given a performance budget, this approach aims to
+        hinder the fuzzing process from adversaries as much as possible. We
+        propose three Fuzzification techniques: 1) SpeedBump, which amplifies
+        the slowdown in normal executions by hundreds of times to the fuzzed
+        execution, 2) BranchTrap, interfering with feedback logic by hiding
+        paths and polluting coverage maps, and 3) AntiHybrid, hindering
+        taint-analysis and symbolic execution. Each technique is designed with
+        best-effort, defensive measures that attempt to hinder adversaries from
+        bypassing Fuzzification .</p>
+
+        <p>Our evaluation on popular fuzzers and real-world applications shows
+        that Fuzzification effectively reduces the number of discovered paths
+        by 70.3% and decreases the number of identified crashes by 93.0% from
+        real-world binaries, and decreases the number of detected bugs by 67.5%
+        from LAVA-M dataset while under user-specified overheads for common
+        workloads. We discuss the robustness of Fuzzification techniques
+        against adversarial analysis techniques. We open-source our
+        Fuzzification system to foster future research.</p>
+
+        <pre>@inproceedings{jung:fuzzification,
+  title        = {{Fuzzification: Anti-Fuzzing Techniques}},
+  author       = {Jinho Jung and Hong Hu and David Solodukhin and Daniel Pagan and Kyu Hyung Lee and Taesoo Kim},
+  booktitle    = {Proceedings of the 28th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2019,
+  address      = {Santa Clara, CA},
+}</pre>
+
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           Enforcing Unique Code Target Property for Control-Flow Integrity
         </span> 
@@ -376,8 +660,43 @@
           [Acc Rate: 16.6%]
         </span>
       </li>
+      <div class=content>
+        The goal of control-flow integrity (CFI) is to stop control-hijacking
+        attacks by ensuring that each indirect control-flow transfer (ICT)
+        jumps to its legitimate target. However, existing implementations of
+        CFI have fallen short of this goal because their approaches are
+        inaccurate and as a result, the set of allowable targets for an ICT
+        instruction is too large, making illegal jumps possible.
 
-      <li>
+        <p>In this paper, we propose the Unique Code Target (UCT) property for
+        CFI. Namely, for each invocation of an ICT instruction, there should be
+        one and only one valid target. We develop a prototype called uCFI to
+        enforce this new property. During compilation, uCFI identifies the
+        sensitive instructions that influence ICT and instruments the program
+        to record necessary execution context. At runtime, uCFI monitors the
+        program execution in a different process, and performs points-to
+        analysis by interpreting sensitive instructions using the recorded
+        execution context in a memory safe manner. It checks runtime ICT
+        targets against the analysis results to detect CFI violations. We apply
+        uCFI to SPEC benchmarks and 2 servers (nginx and vsftpd) to evaluate
+        its efficacy of enforcing UCT and its overhead. We also test uCFI
+        against control-hijacking attacks, including 5 real-world exploits, 1
+        proof of concept COOP attack, and 2 synthesized attacks that bypass
+        existing defenses. The results show that uCFI strictly enforces the UCT
+        property for protected programs, successfully detects all attacks, and
+        introduces less than 10% performance overhead.</p>
+
+        <pre>@inproceedings{hu:ucfi,
+  title        = {{Enforcing Unique Code Target Property for Control-Flow Integrity}},
+  author       = {Hong Hu and Chenxiong Qian and Carter Yagemann and Simon Pak Ho Chung and William R. Harris and Taesoo Kim and Wenke Lee},
+  booktitle    = {Proceedings of the 25th ACM Conference on Computer and Communications Security (CCS)},
+  month        = oct,
+  year         = 2018,
+  address      = {Toronto, ON, Canada},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           The "Web/Local" Boundary Is Fuzzy – A Security Study of Chrome's Process-based Sandboxing
         </span> 
@@ -394,8 +713,40 @@
           [Acc Rate: 16.5%]  
         </span>
       </li>
+      <div class=content>
+        Process-based isolation, suggested by several research prototypes,
+        is a cornerstone of modern browser security architectures. Google
+        Chrome is the first commercial browser that adopts this architecture. 
+        Unlike several research prototypes, Chrome’s process-based
+        design does not isolate different web origins, but primarily promises
+        to protect “the local system” from “the web”. However, as billions of 
+        users now use web-based cloud services (e.g., Dropbox
+        and Google Drive), which are integrated into the local system, the
+        premise that browsers can effectively isolate the web from the local
+        system has become questionable. In this paper, we argue that, if the
+        process-based isolation disregards the same-origin policy as one of
+        its goals, then its promise of maintaining the “web/local system
+        (local)” separation is doubtful. Specifically, we show that existing 
+        memory vulnerabilities in Chrome’s renderer can be used as a
+        stepping-stone to drop executables/scripts in the local file system,
+        install unwanted applications and misuse system sensors. These attacks 
+        are purely data-oriented and do not alter any control flow or
+        import foreign code. Thus, such attacks bypass binary-level protection 
+        mechanisms, including ASLR and in-memory partitioning.
+        Finally, we discuss various full defenses and present a possible way
+        to mitigate the attacks presented.
 
-      <li>
+        <pre>@inproceedings{jia:chrome-attack,
+  title        = {{The "Web/Local" Boundary Is Fuzzy – A Security Study of Chrome's Process-based Sandboxing}},
+  author       = {Yaoqi Jia and Zheng Leong Chua and Hong Hu and Shuo Chen and Prateek Saxena and Zhenkai Liang},
+  booktitle    = {Proceedings of the 23rd ACM Conference on Computer and Communications Security (CCS)},
+  month        = oct,
+  year         = 2016,
+  address      = {Vienna, Austria},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           Data-Oriented Programming: On the Expressiveness of Non-Control Data Attacks
         </span> 
@@ -412,8 +763,41 @@
           [Acc Rate: 13.8%]  
         </span>
       </li>
+      <div class=content>
+        As control-flow hijacking defenses gain adoption,
+        it is important to understand the remaining capabilities of
+        adversaries via memory exploits. Attacks targeting non-control
+        data in memory can exhibit information leakage or privilege
+        escalation. Compared to control-flow hijacking attacks, such 
+        noncontrol data exploits have limited expressiveness; however, the
+        question is: what is the real expressive power of non-control
+        data attacks? In this paper we show that such attacks are
+        Turing-complete. We present a systematic technique called 
+        data-oriented programming (DOP) to construct expressive non-control
+        data exploits for arbitrary x86 programs. In the experimental
+        evaluation using 9 programs, we identified 7518 data-oriented
+        x86 gadgets and 5052 gadget dispatchers, which are the building
+        blocks for DOP. 8 out of 9 real-world programs have gadgets to
+        simulate arbitrary computations and 2 of them are confirmed
+        to be able to build Turing-complete attacks. We build 3 end-to-end 
+        attacks to bypass randomization defenses without leaking
+        addresses, to run a network bot which takes commands from the
+        attacker, and to alter the memory permissions. All the attacks
+        work in the presence of ASLR and DEP, demonstrating how
+        the expressiveness offered by DOP significantly empowers the
+        attacker.
+
+        <pre>@inproceedings{hu:dop,
+  title        = {{Data-Oriented Programming: On the Expressiveness of Non-Control Data Attacks}},
+  author       = {Hong Hu and Shweta Shinde and Sendroiu Adrian and Zheng Leong Chua and Prateek Saxena and Zhenkai Liang},
+  booktitle    = {Proceedings of the 37th IEEE Symposium on Security and Privacy (Oakland)},
+  month        = may,
+  year         = 2016,
+  address      = {San Francisco, CA},
+}</pre>
+      </div>
     
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           Identifying Arbitrary Memory Access Vulnerabilities in Privilege-Separated Software
         </span> 
@@ -429,8 +813,31 @@
           [Acc Rate: 20%]  
         </span>
       </li>
+      <div class=content>
+        Privilege separation is a widely used technique to secure complex software
+        systems. With privilege separation, software components are divided into several 
+        partitions and these partitions can only communicate through limited interfaces. 
+        However, the interfaces still provide a channel for one partition to influence 
+        code in other partitions. As a result, certain memory access patterns can be 
+        leveraged by attackers to perform arbitrary memory access. We refer to this type 
+        of memory access errors by the acronym DUI (Dereference Under the Influence). 
+        In this paper, we present a systematic method to detect vulnerabilities leading 
+        to DUI through binary analysis, and to estimate the capability attackers can obtain 
+        through DUI exploits. The evaluation shows that our approach can accurately identify 
+        vulnerable code that leads to arbitrary memory access in real-world software 
+        components and programs, when they are transformed to privilege-separated designs.
+
+        <pre>@inproceedings{hu:dui,
+  title        = {{Identifying Arbitrary Memory Access Vulnerabilities in Privilege-Separated Software}},
+  author       = {Hong Hu and Zheng Leong Chua and Prateek Saxena and Zhenkai Liang},
+  booktitle    = {Proceedings of the 20th European Symposium on Research in Computer Security (ESORICS 2015)},
+  month        = september,
+  year         = 2015,
+  address      = {Vienna, Austria},
+}</pre>
+      </div>
     
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           Automatic Generation of Data-Oriented Exploits
         </span> 
@@ -447,8 +854,42 @@
           [Acc Rate: 16%]  
         </span>
       </li>
+      <div class=content>
+        As defense solutions against control-flow hijacking 
+        attacks gain wide deployment, control-oriented exploits
+        from memory errors become difficult. As an alternative, 
+        attacks targeting non-control data do not require
+        diverting the application’s control flow during an attack. 
+        Although it is known that such data-oriented 
+        attacks can mount significant damage, no systematic 
+        methods to automatically construct them from memory 
+        errors have been developed. In this work, we develop a
+        new technique called data-flow stitching, which systematically 
+        finds ways to join data flows in the program to
+        generate data-oriented exploits. We build a prototype
+        embodying our technique in a tool called FLOWSTITCH
+        that works directly on Windows and Linux binaries. In
+        our experiments, we find that FLOWSTITCH automatically 
+        constructs 16 previously unknown and three known
+        data-oriented attacks from eight real-world vulnerable
+        programs. All the automatically-crafted exploits respect
+        fine-grained CFI and DEP constraints, and 10 out of the
+        19 exploits work with standard ASLR defenses enabled.
+        The constructed exploits can cause significant damage,
+        such as disclosure of sensitive information (e.g., 
+        passwords and encryption keys) and escalation of privilege.
 
-      <li>
+        <pre>@inproceedings{hu:flowstitch,
+  title        = {{Automatic Generation of Data-Oriented Exploits}},
+  author       = {Hong Hu and Zheng Leong Chua and Sendroiu Adrian and Prateek Saxena and Zhenkai Liang},
+  booktitle    = {Proceedings of the 24th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2015,
+  address      = {Santa Clara, CA},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           DroidVault: A Trusted Data Vault for Android Devices
         </span> 
@@ -465,8 +906,35 @@
         <br>
         <font color=#DD0000> <i><b>* Awarded Best Paper</b></i></font>
       </li>
+      <div class=content>
+        Mobile OSes and applications form a large, complex
+        and vulnerability-prone software stack. In such an environment,
+        security techniques to strongly protect sensitive data in mobile 
+        devices are important and challenging. To address such challenges,
+        we introduce the concept of the trusted data vault, a small trusted
+        engine that securely manages the storage and usage of sensitive
+        data in an untrusted mobile device. In this paper, we design and
+        build DroidVault— the first realization of a trusted data vault on
+        the Android platform. DroidVault establishes a secure channel
+        between data owners and data users while allowing data owners
+        to enforce strong control over the sensitive data with a minimal
+        trusted computing base (TCB). We prototype DroidVault via
+        the novel use of hardware security features of ARM processors,
+        i.e., TrustZone. Our evaluation demonstrates its functionality for
+        processing sensitive data and its practicality for adoption in the
+        real world.
 
-      <li>
+        <pre>@inproceedings{li:droidvault,
+  title        = {{DroidVault: A Trusted Data Vault for Android Devices}},
+  author       = {Xiaolei Li and Hong Hu and Guangdong Bai and Yaoqi Jia and Zhenkai Liang and Prateek Saxena},
+  booktitle    = {Proceedings of the 19th International Conference on Engineering of Complex Computer Systems (ICECCS)},
+  month        = aug,
+  year         = 2015,
+  address      = {Tianjin, China},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           Practical Analysis Framework for Software-based Attestation Scheme
         </span> 
@@ -480,7 +948,35 @@
           Proceedings of the 16th International Conference on Formal Engineering Methods (ICFEM 2014).
           [Acc Rate: 30%]  
         </span>
-      <li>
+      </li>
+      <div class=content>
+        An increasing number of "smart" embedded devices are employed in our living 
+        environment nowadays. Unlike traditional computer systems, these 
+        devices are often physically accessible to the attackers. It is therefore almost 
+        impossible to guarantee that they are un-compromised, i.e., that indeed the devices are
+        executing the intended software. In such a context, software-based attestation is
+        deemed as a promising solution to validate their software integrity. It guarantees
+        that the software running on the embedded devices are un-compromised without
+        any hardware support. However, designing software-based attestation protocols
+        are shown to be error-prone. In this work, we develop a framework for design
+        and analysis of software-based attestation protocols. We first propose a generic
+        attestation scheme that captures most existing software-based attestation protocols. 
+        After formalizing the security criteria for the generic scheme, we apply our
+        analysis framework to several well-known software-based attestation protocols
+        and report various potential vulnerabilities. To the best of our knowledge, this is
+        the first practical analysis framework for software-based attestation protocols.
+
+        <pre>@inproceedings{li:attestation,
+  title        = {{Practical Analysis Framework for Software-based Attestation Scheme}},
+  author       = {Li Li and Hong Hu and Jun Sun and Yang Liu and Jin Song Dong},
+  booktitle    = {Proceedings of the 16th International Conference on Formal Engineering Methods (ICFEM)},
+  month        = nov,
+  year         = 2014,
+  address      = {Luxembourg},
+}</pre>
+      </div>
+
+      <li class=collapsible>
         <span class=pub-title>
           A Quantitative Evaluation of Privilege Separation in Web Browser Designs
         </span> 
@@ -495,6 +991,30 @@
           [Acc Rate: 17.8%]  
         </span>
       </li>
+      <div class=content>
+        Privilege separation is a fundamental security concept that has been
+        used in designing many secure systems. A number of recent works propose 
+        redesigning web browsers with greater privilege separation for better security. In
+        practice, however, privilege-separated designs require a fine balance between 
+        security benefits and other competing concerns, such as performance. 
+        In fact, performance overhead has been a main cause that prevents many 
+        privilege separation proposals from being adopted in real systems. In this paper, we develop a
+        new measurement-driven methodology that quantifies security benefits and 
+        performance costs for a given privilege-separated browser design. Our measurements
+        on a large corpus of web sites provide key insights on the security and performance 
+        implications of partitioning dimensions proposed in 9 recent browser designs. 
+        Our results also provide empirical guidelines to resolve several design decisions 
+        being debated in recent browser re-design efforts.
+
+        <pre>@inproceedings{dong:browser-isolation,
+  title        = {{A Quantitative Evaluation of Privilege Separation in Web Browser Designs}},
+  author       = {Xinshu Dong and Hong Hu and Zhenkai Liang and Prateek Saxena},
+  booktitle    = {Proceedings of the 18th European Symposium on Research in Computer Security (ESORICS)},
+  month        = sep,
+  year         = 2013,
+  address      = {Egham, UK},
+}</pre>
+      </div>
 
     </ol>
 
