@@ -10,6 +10,7 @@
         padding: auto;
         width: 1024px;
 
+        color: #2E3436;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 15px;
         line-height: 1.4em;
@@ -19,12 +20,21 @@
         cursor: pointer;
       }
 
-      .collapsible:after {
+      .collapsible:hover::after {
         font-weight: bold;
         float: right;
         content: '\2913';
       }
+
       .active::after {
+        font-weight: bold;
+        float: right;
+        content: "\2912";
+      }
+
+      .active:hover::after {
+        font-weight: bold;
+        float: right;
         content: "\2912";
       }
 
@@ -48,6 +58,7 @@
       .pub-title {
         font-weight: bold;
         float:left;
+        display: block;
       }
       .pub-links {
         font-weight: bold;
@@ -131,7 +142,6 @@
         In <span class=pub-conf>
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
-        <br>
       </li>
 
       <li>
@@ -147,7 +157,6 @@
         In <span class=pub-conf>
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
-        <br>
       </li>
 
       <li class=collapsible>
@@ -209,7 +218,7 @@
 }</pre>
       </div>
 
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)
         </span> 
@@ -222,8 +231,21 @@
         In <span class=pub-conf>
           Proceedings of the 28th Network and Distributed System Security Symposium (NDSS 2021).
         </span>
-        <br>
       </li>
+      <div class=content>
+        Fuzzing is an emerging technique to automatically validate programs and uncover bugs. It has been widely used to test many programs and has found thousands of security vulnerabilities. However, existing fuzzing efforts are mainly centered around Unix-like systems, as Windows imposes unique challenges for fuzzing: a closed-source ecosystem, the heavy use of graphical interfaces and the lack of fast process cloning machinery.
+
+        <p>In this paper, we propose two solutions to address the challenges Windows fuzzing faces. Our system, WINNIE, first tries to synthesize a harness for the application, a simple program that directly invokes target functions, based on sample executions. It then tests the harness, instead of the original complicated program, using an efficient implementation of fork on Windows. Using these techniques, WINNIE can bypass irrelevant GUI code to test logic deep within the application. We used WINNIE to fuzz 59 closed-source Windows executables, and it successfully generated valid fuzzing harnesses for all of them. In our evaluation, WINNIE can support 2.2× more programs than existing Windows fuzzers could, and identified 3.9× more program states and achieved 26.6× faster execution. In total, WINNIE found 61 unique bugs in 32 Windows executables.</p>
+
+        <pre>@inproceedings{jung:winnie,
+  title        = {{WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)}},
+  author       = {Jinho Jung and Stephen Tong and Hong Hu and Jungwon Lim and Yonghwi Jin and Taesoo Kim},
+  booktitle    = {Proceedings of the 2021 Annual Network and Distributed System Security Symposium (NDSS)},
+  month        = feb,
+  year         = 2021,
+  address      = {Virtual},
+}</pre>
+      </div>
 
       <li>
         <span class=pub-title>
@@ -241,7 +263,6 @@
           Proceedings of the 27th ACM Conference on Computer and Communications Security (CCS 2020).
           [Acc Rate: 16.9%]
         </span>
-        <br>
       </li>
 
       <li>
@@ -259,7 +280,6 @@
           Proceedings of the 46th International Conference on Very Large Data Bases (VLDB 2020).
           [Acc Rate: 25%]
         </span>
-        <br>
       </li>
 
       <li>
@@ -319,7 +339,6 @@
           Proceedings of the 28th USENIX Security Symposium (USENIX 2019). 
           [Acc Rate: 16%]
         </span>
-        <br>
       </li>
 
       <li>
@@ -338,7 +357,6 @@
           Proceedings of the 28th USENIX Security Symposium (USENIX 2019). 
           [Acc Rate: 16%]
         </span>
-        <br>
       </li>
 
       <li>
@@ -357,7 +375,6 @@
           Proceedings of the 25th ACM Conference on Computer and Communications Security (CCS 2018). 
           [Acc Rate: 16.6%]
         </span>
-        <br>
       </li>
 
       <li>
@@ -376,7 +393,6 @@
           Proceedings of the 23rd ACM Conference on Computer and Communications Security (CCS 2016). 
           [Acc Rate: 16.5%]  
         </span>
-        <br>
       </li>
 
       <li>
@@ -395,7 +411,6 @@
           Proceedings of the 37th IEEE Symposium on Security and Privacy (Oakland 2016).
           [Acc Rate: 13.8%]  
         </span>
-        <br>
       </li>
     
       <li>
@@ -413,7 +428,6 @@
           Proceedings of the 20th European Symposium on Research in Computer Security (ESORICS 2015).
           [Acc Rate: 20%]  
         </span>
-        <br>
       </li>
     
       <li>
@@ -432,7 +446,6 @@
           Proceedings of the 24th USENIX Security Symposium (USENIX 2015).
           [Acc Rate: 16%]  
         </span>
-        <br>
       </li>
 
       <li>
@@ -467,9 +480,6 @@
           Proceedings of the 16th International Conference on Formal Engineering Methods (ICFEM 2014).
           [Acc Rate: 30%]  
         </span>
-        <br>
-      </li>
-    
       <li>
         <span class=pub-title>
           A Quantitative Evaluation of Privilege Separation in Web Browser Designs
@@ -484,7 +494,6 @@
           Proceedings of the 18th European Symposium on Research in Computer Security (ESORICS 2013).
           [Acc Rate: 17.8%]  
         </span>
-        <br>
       </li>
 
     </ol>
@@ -505,7 +514,6 @@
         <span class=pub-conf>
           Black Hat USA Briefings (Black Hat USA 2020)
         </span>
-        <br>
       </li>
 
       <li>
@@ -518,7 +526,6 @@
         <span class=pub-conf>
           First International Workshop on SoftwAre debLoating And Delayering (SALAD 2018).
         </span>
-        <br>
       </li>
 
       <li>
@@ -534,7 +541,6 @@
         <span class=pub-conf>
           Proceedings of the 32nd IEEE/ACM International Conference on Automated Software Engineering (ASE 2017).
         </span>
-        <br>
       </li>
 
       <li>
@@ -550,7 +556,6 @@
         In <span class=pub-conf>
           22nd Network and Distributed System Security Symposium (NDSS 2015).
         </span>
-        <br>
       </li>
 
     </ol>
