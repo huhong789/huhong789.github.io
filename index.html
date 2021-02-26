@@ -142,11 +142,11 @@
         <br>
         Kyuhong Park, Burak Sahin, Yongheng Chen, Jisheng Zhao, Evan Downing, <u>Hong Hu</u>, and Wenke Lee.<br>
         In <span class=pub-conf>
-          Proceedings of the 16th ACM ASIA Conference on Computer and Communications Security (ACM ASIACCS 2021).
+          Proceedings of the 16th ACM ASIA Conference on Computer and Communications Security (AsiaCCS 2021).
         </span>
       </li>
 
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           Sharing More and Checking Less: Leaveraging Common Input Keywords to Detect Bugs in Embedded Systems (to appear)
         </span> 
@@ -160,8 +160,42 @@
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
       </li>
+      <div class="content">
+        IoT devices have brought invaluable convenience to our daily life.
+        However, their pervasiveness also amplifies the impact of security
+        vulnerabilities. Many popular vulnerabilities of embedded systems
+        reside in their vulnerable web services. Unfortunately, existing
+        vulnerability detection methods cannot effectively nor efficiently
+        analyze such web services: they either introduce heavy execution
+        overheads or have many false positives and false negatives.
 
-      <li>
+        <p>In this paper, we propose a novel static taint checking solution,
+        SaTC, to effectively detect security vulnerabilities in web services
+        provided by embedded devices. Our key insight is that, string literals
+        on web interfaces are commonly shared between front-end files and
+        back-end binaries to encode user input. We thus extract such common
+        keywords from the front-end, and use them to locate reference points
+        in the back-end, which indicate the input entry. Then, we apply
+        targeted data-flow analysis to accurately detect dangerous uses of the
+        untrusted user input. We implemented a prototype of SaTC and
+        evaluated it on 39 embedded system firmwares from six popular
+        vendors. SaTC discovered 33 unknown bugs, of which 30 are confirmed by
+        CVE/CNVD/PSV. Compared to the state-of-the-art tool KARONTE, SaTC
+        found significantly more bugs on the test set. It shows that, SaTC is
+        effective in discovering bugs in embedded systems.</p>
+
+        <pre>@inproceedings{chen:satc,
+  title        = {{Sharing More and Checking Less: Leaveraging Common Input Keywords to Detect Bugs in Embedded Systems (to appear)}},
+  author       = {Libo Chen and Yanhao Wang and Quanpu Cai and Yunfan Zhan and Hong Hu and Jiaqi Linghu and Qinsheng Hou and Chao Zhang and Haixin Duan and Zhi Xue},
+  booktitle    = {Proceedings of the 30th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2021,
+  address      = {Vancouver, B.C., Canada},
+}</pre>
+      </div>
+
+
+      <li class=collapsible>
         <span class=pub-title>
           Abusing Hidden Properties to Attack the Node.js Ecosystem (to appear)
         </span> 
@@ -175,6 +209,42 @@
           Proceedings of the 30th USENIX Security Symposium (USENIX 2021). 
         </span>
       </li>
+      <div class="content">
+        Nowadays, Node.js has been widely used in the development of server-side and
+        desktop programs (e.g., Skype), with its cross-platform and high-performance
+        execution environment of JavaScript. In past years, it has been reported other
+        dynamic programming languages (e.g., PHP and Ruby) are unsafe on sharing
+        objects. However, this security risk is not well studied and understood in
+        JavaScript and Node.js programs.
+        
+        <p>In this paper, we fill the gap by conducting the first system- atic study on
+        the communication process between client- and server-side code in Node.js
+        programs. We extensively identify several new vulnerabilities in popular
+        Node.js programs. To demonstrate their security implications, we design and de-
+        velop a novel feasible attack, named hidden property abusing (HPA). Our further
+        analysis shows HPA attacks are subtly different from existing findings
+        regarding exploitation and attack effects. Through HPA attacks, a remote web
+        attacker may obtain dangerous abilities, such as stealing confidential data,
+        bypassing security checks, and launching DoS (Denial of Service) attacks.</p>
+        
+        <p>To help Node.js developers vet their programs against HPA, we design a novel
+        vulnerability detection and verification tool, named LYNX, that utilizes hybrid
+        program analysis to automatically reveal HPA vulnerabilities and even
+        synthesize exploits. We apply LYNX on a set of widely-used Node.js programs and
+        identify 15 previously unknown vulnerabilities. We have reported all of our
+        findings to the Node.js community. 10 of them have been assigned with CVE, and
+        8 of them are rated as “Critical” or “High” severity. This indicates HPA
+        attacks can cause serious security threats.</p>
+
+        <pre>@inproceedings{xiao:lynx,
+  title        = {{Abusing Hidden Properties to Attack the Node.js Ecosystem (to appear)}},
+  author       = {Feng Xiao and Jianwei Huang and Yichang Xiong and Guangliang Yang and Hong Hu and Guofei Gu and Wenke Lee},
+  booktitle    = {Proceedings of the 30th USENIX Security Symposium (Security)},
+  month        = aug,
+  year         = 2021,
+  address      = {Vancouver, B.C., Canada},
+}</pre>
+      </div>
 
       <li class=collapsible>
         <span class=pub-title>
@@ -278,7 +348,7 @@
 
       <li class=collapsible>
         <span class=pub-title>
-          WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)
+          WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning
         </span> 
         <span class=pub-links>
           <a href="https://github.com/sslab-gatech/winnie"><img alt="Website" src="./images/www.svg" height=15px></a>
@@ -315,7 +385,7 @@
         unique bugs in 32 Windows executables.</p>
 
         <pre>@inproceedings{jung:winnie,
-  title        = {{WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning (to appear)}},
+  title        = {{WINNIE: Fuzzing Windows Applications with Harness Synthesis and Fast Cloning}},
   author       = {Jinho Jung and Stephen Tong and Hong Hu and Jungwon Lim and Yonghwi Jin and Taesoo Kim},
   booktitle    = {Proceedings of the 2021 Annual Network and Distributed System Security Symposium (NDSS)},
   month        = feb,
@@ -1129,7 +1199,7 @@
     <h2>Professional Experience</h2>
     <ul>
       <li><strong>Reviewer</strong> <br>
-      ACM ASIA Conference on Computer and Communications Security (ASIACCS) [2019,2020] <br>
+      ACM ASIA Conference on Computer and Communications Security (ASIACCS) [2019,2021] <br>
       </li>
     </ul>
     <hr>
