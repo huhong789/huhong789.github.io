@@ -131,7 +131,7 @@
     <ol reversed>
 
 
-      <li>
+      <li class=collapsible>
         <span class=pub-title>
           Identifying Behavior Dispatchers for Malware Analysis (to appear)
         </span> 
@@ -145,6 +145,43 @@
           Proceedings of the 16th ACM ASIA Conference on Computer and Communications Security (AsiaCCS 2021).
         </span>
       </li>
+      <div class="content">
+        Malware is a major threat to modern computer systems. Malicious
+        behaviors are hidden by a variety of techniques: code obfuscation,
+        message encoding and encryption, etc. Countermeasures have been
+        developed to thwart these techniques in order to expose malicious
+        behaviors. However, these countermeasures rely heavily on identifying
+        specific API calls, which has significant limitations as these calls
+        can be misleading or hidden from the analyst. In this paper, we show
+        that malicious programs share a key component which we call a behavior
+        dispatcher, a code structure which is intercepted between various
+        condition checks and malicious actions. By identifying these behavior
+        dispatchers, a malware analysis can be guided into behavior dispatchers
+        and activate hidden malicious actions more easily.
+
+        <p>We propose BDHunter, a system that automatically identifies dispatchers
+        to assist triggering malicious behaviors. BDHunter takes advantage of
+        the observation that a dispatcher compares an input with a set of
+        expected values to determine which malicious behaviors to execute next.
+        We evaluate BDHunter on recent malware samples to identify behavior
+        dispatchers and show that these dispatchers can help trigger more
+        malicious behaviors (otherwise hidden). Our experimental results show
+        that BDHunter identifies 77.4% of dispatchers within the top 20
+        candidates discovered. Furthermore, BDHunter-guided concolic execution
+        successfully triggers 13.0× and 2.6× more malicious behaviors, compared
+        to unguided symbolic and concolic execution, respectively. These
+        demonstrate that BDHunter effectively identifies behavior
+        dispatchers, which are useful for exposing malicious behaviors.</p>
+
+        <pre>@inproceedings{park:bdhunter,
+  title        = {{Identifying Behavior Dispatchers for Malware Analysis}},
+  author       = {Kyuhong Park and Burak Sahin and Yongheng Chen and Jisheng Zhao and Evan Downing and Hong Hu and Wenke Lee},
+  booktitle    = {Proceedings of the 16th ACM ASIA Conference on Computer and Communications Security(AsiaCCS 2021)},
+  month        = jun,
+  year         = 2021,
+  address      = {Hong Kong, China},
+}</pre>
+      </div>
 
       <li class=collapsible>
         <span class=pub-title>
